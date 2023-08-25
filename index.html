@@ -87,9 +87,9 @@
         <h1>Online Calculator Screen Reader</h1>
         <h3>A free screen reader for the web to improve accessibility.<br>Now even the blind and the visually impaired can access everything.<br>Developed By Group 12</h3>
         <sup id="free">It's free!</sup>
-        
-        
-        
+
+
+
 
         <br>
         <hr>
@@ -99,9 +99,11 @@
 
         <div>
             <h3>INSTRUCTIONS:</h3>
+            <h2> Please listen to these instructions very attentively</></h2>
             <h2> Your calculator is displayed right after the following instructuions</h2>
             <h2> Please the oprerators are at the right side of the numbers</h2>
             <h2> Input the numbers you want to calculate</></h2>
+            <h2> Scroll to the bottom of this App to access the calculator</></h2>
             <h2> The caculate button is located at the bottom of this App</h2>
 
 
@@ -134,12 +136,12 @@
                 </tr>
                 <tr>
                     <td>0</td>
-                    <td></td>
                     <td>=</td>
                     <td>+</td>
                 </tr>
             </table>
             <button id="calc-btn">Calculate</button>
+            <button id="clear-btn">Clear</button>
             <p id="calc-result"></p>
         </div>
 
@@ -185,5 +187,41 @@
             }
         });
     </script>
+
+    <script>
+        // Function to read the page content aloud
+        function readPageContent() {
+            const allText = document.body.innerText; // Get all the text content
+            const speech = new SpeechSynthesisUtterance(allText);
+            speech.volume = 1; // Volume (0 to 1)
+            speech.rate = 1;   // Speed (0.1 to 10)
+            speech.pitch = 1;  // Pitch (0 to 2)
+            speech.lang = 'en-US'; // Language (you can change this as needed)
+
+            // Speak the content
+            speechSynthesis.speak(speech);
+        }
+
+        // Read the page content when the page loads
+        window.onload = readPageContent;
+
+
+        const clearBtn = document.getElementById("clear-btn");
+        clearBtn.addEventListener("click", () => {
+            calcInput.value = ""; // Clear the input field
+            calcResult.textContent = ""; // Clear the result
+        });
+
+        // Function to read the page content aloud
+        function readPageContent() {
+            // ... your existing readPageContent function ...
+        }
+
+        // Read the page content when the page loads
+        window.onload = readPageContent;
+
+    </script>
+
+
 </body>
 </html>
